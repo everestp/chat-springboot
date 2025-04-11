@@ -1,15 +1,7 @@
-# Use the official lightweight OpenJDK image
-FROM openjdk:21-jdk-slim
-
-# Set the working directory inside the container
-WORKDIR /app
-
-# Copy the application JAR file into the container
-COPY target/*.jar app.jar
-
-# Expose the port your app will run on
+FROM maven:3-eclipse-temurin-17
+COPY . .
+RUN mvn clean package -DskipTests
+FROM eclipse-temurin:17-alpine
+COPY --from=build /target/*.jar demo.jar
 EXPOSE 8080
-
-CMD["java","-jar","app.jar"]
-# Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "demo.jar"]
