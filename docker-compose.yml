@@ -13,6 +13,7 @@ services:
 
 
   boot-app:
+
     build:
       context: .
       dockerfile: Dockerfile
