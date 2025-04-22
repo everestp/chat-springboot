@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/v1/rooms")
-@CrossOrigin(Appconstants.FRONTEND_BASE_URL)
+@CrossOrigin("*")
 public class RoomController {
 
 
